@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
+        <div className="h-auto">
             This is the footer component.
         </div>
     );

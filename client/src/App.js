@@ -6,14 +6,14 @@ import Footer from './components/footer/footer';
 
 function App() {
     return (
-        <div className="container h-100 border border-dark">
+        <div className="min-h-100">
             <Header />
-            <div className="h-100">
+            <div className="container h-100 border border-dark">
                 <h1 className="px-4">Starter code for body in App.js</h1>
             </div>
+            <div className="push"></div>
             <Footer />
         </div>
-
     );
 }
 
