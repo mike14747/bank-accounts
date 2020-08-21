@@ -4,6 +4,8 @@ router.get('/', (req, res) => {
     res.send('Sending this from the root of the api route!');
 });
 
+router.use('/users', require('./usersController'));
+
 router.use((req, res, next) => {
     const error = new Error('Route not found');
     error.status = 404;
