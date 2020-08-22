@@ -14,7 +14,7 @@
         "type": "git",
         "url": "git+https://github.com/mike14747/bank-accounts.git"
     },
-    "keywords": ["node", "javascript", "npm", "express", "mongodb", "mocha", "chai", "chai-http", "passport"],
+    "keywords": ["node", "javascript", "npm", "express", "mongodb", "mocha", "chai", "chai-http"],
     "author": "Mike Gullo",
     "license": "ISC",
     "bugs": {
