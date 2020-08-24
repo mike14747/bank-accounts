@@ -1,6 +1,8 @@
 const pool = require('../config/connectionPool').getDb();
 
 const session = require('express-session');
+
+// change this to "connect-mongo"
 const MySQLStore = require('express-mysql-session')(session);
 
 const sessionOptions = {
