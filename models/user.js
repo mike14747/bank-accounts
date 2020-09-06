@@ -4,8 +4,7 @@ const ObjectID = require('mongodb').ObjectID;
 const User = {
     getAllUsers: async () => {
         try {
-            // console.log('inside the user model', db);
-            const result = await db.collection('users').find({}).toArray();
+            const result = await db.collection('users').find({}).sort({ _id: -1 }).toArray();
             return [result, null];
         } catch (error) {
             return [null, error];
