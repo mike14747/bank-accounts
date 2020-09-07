@@ -6,6 +6,8 @@ router.get('/', (req, res) => {
 
 router.use('/users', require('./usersController'));
 
+router.use('/auth', require('./authController'));
+
 router.use((req, res, next) => {
     const error = new Error('Route not found');
     error.status = 404;

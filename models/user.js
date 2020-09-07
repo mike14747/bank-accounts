@@ -10,9 +10,9 @@ const User = {
             return [null, error];
         }
     },
-    getUserById: async (id) => {
+    getUserById: async (_id) => {
         try {
-            const result = await db.collection('users').find({ _id: ObjectID(id) }).toArray();
+            const result = await db.collection('users').find({ _id: ObjectID(_id) }).toArray();
             return [result, null];
         } catch (error) {
             return [null, error];
@@ -26,20 +26,51 @@ const User = {
             return [null, error];
         }
     },
-    // addNewUser: async (paramsObj) => {
-    //     const document = {
-    //         username: paramsObj.username,
-    //         hashed_password: paramsObj.hashed_password,
-    //         access_level: paramsObj.access_level,
-    //         email: paramsObj.email,
-    //     };
-    //     try {
-    //         const result = await db.collection('users').insertOne(document);
-    //         return [result, null];
-    //     } catch (error) {
-    //         return [null, error];
-    //     }
-    // },
+    addNewUser: async (paramsObj) => {
+        try {
+            const document = {
+                username: paramsObj.username,
+                password: paramsObj.password,
+                email: paramsObj.email,
+                name: {
+                    first: paramsObj.name.first,
+                    last: paramsObj.name.last,
+                },
+            };
+            const result = await db.collection('users').insertOne(document);
+            return [result, null];
+        } catch (error) {
+            return [null, error];
+        }
+    },
+    updateUserById: async (paramsObj) => {
+        try {
+            const queryParams = {
+                _id: paramsObj._id,
+            };
+            const document = {
+                username: paramsObj.username,
+                password: paramsObj.password,
+                email: paramsObj.email,
+                name: {
+                    first: paramsObj.name.first,
+                    last: paramsObj.name.last,
+                },
+            };
+            const result = await db.collection('users').updateOne({ _id: ObjectID(queryParams._id) }, { $set: document });
+            return [result, null];
+        } catch (error) {
+            return [null, error];
+        }
+    },
+    deleteUserById: async (_id) => {
+        try {
+            const result = await db.collection('users').deleteOne({ _id: ObjectID(_id) });
+            return [result, null];
+        } catch (error) {
+            return [null, error];
+        }
+    },
 };
 
 module.exports = User;

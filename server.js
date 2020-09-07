@@ -26,7 +26,6 @@ mongodbConnect()
         // const passport = require('./passport/passportFunctions');
         // app.use(passport.initialize());
         // app.use(passport.session());
-        app.use('/api', require('./controllers/publicRoutes'));
         app.use('/api', require('./controllers'));
     })
     .catch((error) => {
