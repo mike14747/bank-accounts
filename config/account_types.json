@@ -1,0 +1,20 @@
+[
+    {
+        "Type": "Checking"
+    },
+    {
+        "Type": "Savings"
+    },
+    {
+        "Type": "Investment"
+    },
+    {
+        "Type": "Health Savings"
+    },
+    {
+        "Type": "Cryptocurrency"
+    },
+    {
+        "Type": "Other"
+    }
+]

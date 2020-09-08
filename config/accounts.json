@@ -1,11 +1,17 @@
 [
     {
-        "user_id": {"$oid": "5f566cb84c44072bb03eb40d"},
+        "user_id": {"$oid": "5f57bc496068bb06f877c366"},
         "account_name": "Test Account",
-        "account_number": 0,
+        "account_number": 1234,
         "institution": "First Federal of Lakewood",
-        "account_type": "Checking",
-        "opening_balance": 0,
+        "account_type": {"$oid": "5f57b7f86068bb06f877c35a"},
+        "opening_balance": 100.50,
+        "payees": [
+            "City of Painesville",
+            "Spectrum",
+            "Chase",
+            "Transfer to Savings"
+        ],
         "transactions": [
             {
                 "date": "2020-09-06",
@@ -15,6 +21,7 @@
             },
             {
                 "date": "2020-09-04",
+                "check_number": null,
                 "payee": "Spectrum",
                 "amount": 27.99
             }

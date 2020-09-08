@@ -8,6 +8,8 @@ router.use('/users', require('./usersController'));
 
 router.use('/auth', require('./authController'));
 
+router.use('/accounts', require('./accountsController'));
+
 router.use((req, res, next) => {
     const error = new Error('Route not found');
     error.status = 404;
