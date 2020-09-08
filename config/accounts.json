@@ -1,0 +1,23 @@
+[
+    {
+        "user_id": {"$oid": "5f566cb84c44072bb03eb40d"},
+        "account_name": "Test Account",
+        "account_number": 0,
+        "institution": "First Federal of Lakewood",
+        "account_type": "Checking",
+        "opening_balance": 0,
+        "transactions": [
+            {
+                "date": "2020-09-06",
+                "check_number": 191,
+                "payee": "City of Painesville",
+                "amount": 104.72
+            },
+            {
+                "date": "2020-09-04",
+                "payee": "Spectrum",
+                "amount": 27.99
+            }
+        ]
+    }
+]
