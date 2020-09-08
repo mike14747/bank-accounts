@@ -14,10 +14,10 @@ describe('Users API', function () {
                     response.body.should.be.a('array').and.have.lengthOf.at.least(1);
                     response.body.forEach(function (element) {
                         element.should.be.an('object').and.have.all.keys('_id', 'username', 'password', 'email', 'name');
-                        element._id.should.be.a('string');
-                        element.username.should.be.a('string');
-                        element.password.should.be.a('string');
-                        element.email.should.be.a('string');
+                        element._id.should.be.a('string').and.have.lengthOf(24);
+                        element.username.should.be.a('string').and.have.lengthOf.at.least(5);
+                        element.password.should.be.a('string').and.have.lengthOf.at.least(6);
+                        element.email.should.be.a('string').and.have.lengthOf.at.least(4);
                         element.name.should.be.an('object').and.have.all.keys('first', 'last');
                         element.name.first.should.be.a('string');
                         element.name.last.should.be.a('string');

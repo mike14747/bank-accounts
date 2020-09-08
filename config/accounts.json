@@ -2,7 +2,7 @@
     {
         "user_id": {"$oid": "5f57bc496068bb06f877c366"},
         "account_name": "Test Account",
-        "account_number": 1234,
+        "account_number": "1234",
         "institution": "First Federal of Lakewood",
         "account_type": {"$oid": "5f57b7f86068bb06f877c35a"},
         "opening_balance": 100.50,
