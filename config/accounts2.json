@@ -14,22 +14,34 @@
         },
         "opening_balance": 100.5,
         "payees": [
-            "City of Painesville",
-            "Spectrum",
-            "Chase",
-            "Transfer to Savings"
+            {
+                "id": 1,
+                "name": "City of Painesville"
+            },
+            {
+                "id": 2,
+                "name": "Spectrum"
+            },
+            {
+                "id": 3,
+                "name": "Chase"
+            },
+            {
+                "id": 4,
+                "name": "Transfer to Savings"
+            }
         ],
         "transactions": [
             {
                 "date": "2020-09-06",
                 "check_number": 191,
-                "payee": "City of Painesville",
+                "payee_id": 1,
                 "amount": 104.72
             },
             {
                 "date": "2020-09-04",
                 "check_number": null,
-                "payee": "Spectrum",
+                "payee_id": 2,
                 "amount": 27.99
             }
         ]

@@ -1,20 +1,38 @@
 [
     {
-        "Type": "Checking"
+        "_id": {
+            "$oid": "5f5eb8cf51e79a028c020e0d"
+        },
+        "type": "Checking"
     },
     {
-        "Type": "Savings"
+        "_id": {
+            "$oid": "5f5eb8cf51e79a028c020e0e"
+        },
+        "type": "Savings"
     },
     {
-        "Type": "Investment"
+        "_id": {
+            "$oid": "5f5eb8cf51e79a028c020e0f"
+        },
+        "type": "Investment"
     },
     {
-        "Type": "Health Savings"
+        "_id": {
+            "$oid": "5f5eb8cf51e79a028c020e10"
+        },
+        "type": "Health Savings"
     },
     {
-        "Type": "Cryptocurrency"
+        "_id": {
+            "$oid": "5f5eb8cf51e79a028c020e11"
+        },
+        "type": "Cryptocurrency"
     },
     {
-        "Type": "Other"
+        "_id": {
+            "$oid": "5f5eb8cf51e79a028c020e12"
+        },
+        "type": "Other"
     }
 ]
