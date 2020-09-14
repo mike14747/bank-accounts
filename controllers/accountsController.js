@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const Account = require('../models/accounts');
 const { postError, putError, deleteError, nothingUpdatedError } = require('./utils/errorMessages');
+const { formatAccountData } = require('./utils/accountsFunctions');
 
 router.get('/', async (req, res, next) => {
     try {
         const [data, error] = await Account.getAllAccounts();
-        data ? res.json(data) : next(error);
+        data ? res.json(formatAccountData(data)) : next(error);
     } catch (error) {
         next(error);
     }

@@ -9,7 +9,25 @@
         "name": {
             "first": "Bob",
             "last": "Martin"
-        }
+        },
+        "payees": [
+            {
+                "id": 1,
+                "name": "City of Painesville"
+            },
+            {
+                "id": 2,
+                "name": "Spectrum"
+            },
+            {
+                "id": 3,
+                "name": "Chase"
+            },
+            {
+                "id": 4,
+                "name": "Transfer to Savings"
+            }
+        ]
     },
     {
         "_id": {

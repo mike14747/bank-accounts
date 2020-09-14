@@ -13,24 +13,6 @@
             "$oid": "5f5eb8cf51e79a028c020e0d"
         },
         "opening_balance": 100.5,
-        "payees": [
-            {
-                "id": 1,
-                "name": "City of Painesville"
-            },
-            {
-                "id": 2,
-                "name": "Spectrum"
-            },
-            {
-                "id": 3,
-                "name": "Chase"
-            },
-            {
-                "id": 4,
-                "name": "Transfer to Savings"
-            }
-        ],
         "transactions": [
             {
                 "date": "2020-09-06",

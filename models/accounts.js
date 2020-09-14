@@ -28,6 +28,20 @@ const Account = {
                 {
                     $unwind: '$accountTypeInfo',
                 },
+                {
+                    $set: { type: '$accountTypeInfo.type' },
+                },
+                {
+                    $unset: 'accountTypeInfo',
+                },
+                {
+                    $lookup: {
+                        from: 'users',
+                        localField: 'transactions',
+                        foreignField: 'payees',
+                        as: 'payeeName',
+                    },
+                },
             ]).project({ user_id: 0, account_type: 0, 'userInfo.password': 0, 'accountTypeInfo._id': 0 }).toArray();
             return [result, null];
         } catch (error) {
