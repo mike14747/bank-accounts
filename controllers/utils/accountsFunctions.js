@@ -1,8 +1,13 @@
 const formatAccountData = (dataArray) => {
-    const newDataArray = dataArray.map(item => {
-        return item;
+    dataArray.forEach(account => {
+        // console.log(Math.max(...account.payees.map(p => p.id)) + 1);
+        account.nextPayeeId = Math.max(...account.payees.map(p => p.id)) + 1;
+        account.transactions.map(item => {
+            item.payee = account.payees.find(payee => payee.id === item.payee_id).name;
+            return item;
+        });
     });
-    return newDataArray;
+    return dataArray;
 };
 
 module.exports = {
