@@ -18,7 +18,7 @@ const Account = {
                 }, {
                     $lookup: {
                         from: 'account_types',
-                        localField: 'account_type',
+                        localField: 'account_type_id',
                         foreignField: '_id',
                         as: 'accountTypeInfo',
                     },
@@ -31,7 +31,7 @@ const Account = {
                     },
                 }, {
                     $project: {
-                        user_id: 0, account_type: 0, 'userInfo.password': 0, 'userInfo.payees': 0, accountTypeInfo: 0,
+                        user_id: 0, account_type_id: 0, 'userInfo.password': 0, 'userInfo.payees': 0, accountTypeInfo: 0,
                     },
                 },
             ]).toArray();
@@ -59,7 +59,7 @@ const Account = {
                 }, {
                     $lookup: {
                         from: 'account_types',
-                        localField: 'account_type',
+                        localField: 'account_type_id',
                         foreignField: '_id',
                         as: 'accountTypeInfo',
                     },
@@ -72,7 +72,7 @@ const Account = {
                     },
                 }, {
                     $project: {
-                        user_id: 0, account_type: 0, 'userInfo.password': 0, 'userInfo.payees': 0, accountTypeInfo: 0,
+                        user_id: 0, account_type_id: 0, 'userInfo.password': 0, 'userInfo.payees': 0, accountTypeInfo: 0,
                     },
                 },
             ]).toArray();
@@ -92,7 +92,13 @@ const Account = {
     addNewAccount: async (paramsObj) => {
         try {
             const document = {
-
+                user_id: paramsObj.user_id,
+                account_name: paramsObj.account_name,
+                account_number: paramsObj.account_number,
+                institution: paramsObj.institution,
+                account_type_id: paramsObj.account_type_id,
+                opening_balance: paramsObj.opening_balance,
+                transactions: require.body.transactions,
             };
             const result = await db.collection('accounts').insertOne(document);
             return [result, null];
