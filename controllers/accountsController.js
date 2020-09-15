@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Account = require('../models/accounts');
 const { postError, putError, deleteError, nothingUpdatedError } = require('./utils/errorMessages');
-const { formatAccountData } = require('./utils/accountsFunctions');
+const { formatAccountData, findNextPayeeId } = require('./utils/accountsFunctions');
 
 router.get('/', async (req, res, next) => {
     try {
