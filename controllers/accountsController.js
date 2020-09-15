@@ -55,7 +55,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     try {
-        
+        res.end();
     } catch (error) {
         next(error);
     }
