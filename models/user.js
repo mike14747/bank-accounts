@@ -43,6 +43,21 @@ const User = {
             return [null, error];
         }
     },
+    addNewPayee: async (paramsObj) => {
+        try {
+            const queryParams = {
+                _id: paramsObj._id,
+            };
+            const document = {
+                id: paramsObj.id,
+                name: paramsObj.name,
+            };
+            const result = await db.collection('users').updateOne({ _id: ObjectID(queryParams._id) }, { $push: { payees: document } });
+            return [result, null];
+        } catch (error) {
+            return [null, error];
+        }
+    },
     updateUserById: async (paramsObj) => {
         try {
             const queryParams = {

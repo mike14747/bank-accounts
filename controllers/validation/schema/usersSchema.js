@@ -29,6 +29,12 @@ const userIdSchema = Joi.object({
     }).required(),
 });
 
+const payeesSchema = Joi.object({
+    _id: Joi.optional(),
+    id: Joi.number().integer().min(0).required(),
+    name: Joi.string().min(1).required(),
+});
+
 const usernameSchema = Joi.object({
     username: Joi.string().min(1).required(),
 });
@@ -36,5 +42,6 @@ const usernameSchema = Joi.object({
 module.exports = {
     usersSchema,
     userIdSchema,
+    payeesSchema,
     usernameSchema,
 };

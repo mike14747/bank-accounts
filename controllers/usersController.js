@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/user.js');
-const { usersSchema, userIdSchema, usernameSchema } = require('./validation/schema/usersSchema');
+const { usersSchema, userIdSchema, payeesSchema, usernameSchema } = require('./validation/schema/usersSchema');
 const { postError, putError, deleteError, nothingUpdatedError } = require('./utils/errorMessages');
 const isUserIdValid = require('./validation/helpers/isUserIdValid');
 
@@ -48,6 +48,23 @@ router.post('/', async (req, res, next) => {
         const [data, error] = await User.addNewUser(paramsObj);
         if (error) return next(error);
         data && data.insertedId ? res.status(201).json({ insertedId: data.insertedId }) : res.status(400).json({ Error: postError });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post('/payees', async (req, res, next) => {
+    try {
+        const paramsObj = {
+            _id: req.body._id,
+            id: req.body.id,
+            name: req.body.name,
+        };
+        await payeesSchema.validateAsync(paramsObj);
+        await userIdSchema.validateAsync({ _id: paramsObj._id });
+        const [data, error] = await User.addNewPayee(paramsObj);
+        if (error) return next(error);
+        data && data.modifiedCount === 1 ? res.status(201).json({ modifiedCount: data.modifiedCount }) : res.status(400).json({ Error: postError });
     } catch (error) {
         next(error);
     }
