@@ -1,7 +1,7 @@
 const postError = 'An error occurred trying to add the new record.';
 const putError = 'An error occurred trying to update the record.';
 const deleteError = 'An error occurred trying to delete the record.';
-const idError = '"_id" must be a string of 24 hex characters';
+const idError = '"_id" fields must be a string of 24 hex characters';
 const activeError = 'The "active" field serves as a boolean and must be either 0 or 1.';
 const dateError = 'The "date" must be a valid ISO 8601 date and in YYYY-MM-DD format.';
 const usernameError = 'The "username" field must be from 6 to 15 characters in length.';

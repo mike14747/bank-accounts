@@ -40,14 +40,14 @@ router.post('/', async (req, res, next) => {
             institution: req.body.institution,
             account_type_id: req.body.account_type_id,
             opening_balance: req.body.opening_balance,
-            transactions: [],
+            transactions: req.body.transactions,
         };
         await accountsSchema.validateAsync(paramsObj);
         await idSchema.validateAsync({ _id: paramsObj.user_id });
         await idSchema.validateAsync({ _id: paramsObj.account_type_id });
         const [data, error] = await Account.addNewAccount(paramsObj);
         if (error) return next(error);
-        data && data.insertId ? res.status(201).json({ insertId: data.insertId }) : res.status(400).json({ Error: postError });
+        data && data.insertedId ? res.status(201).json({ insertedId: data.insertedId }) : res.status(400).json({ Error: postError });
     } catch (error) {
         next(error);
     }

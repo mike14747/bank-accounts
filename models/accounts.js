@@ -92,13 +92,13 @@ const Account = {
     addNewAccount: async (paramsObj) => {
         try {
             const document = {
-                user_id: paramsObj.user_id,
+                user_id: ObjectID(paramsObj.user_id),
                 account_name: paramsObj.account_name,
                 account_number: paramsObj.account_number,
                 institution: paramsObj.institution,
-                account_type_id: paramsObj.account_type_id,
+                account_type_id: ObjectID(paramsObj.account_type_id),
                 opening_balance: paramsObj.opening_balance,
-                transactions: require.body.transactions,
+                transactions: paramsObj.transactions,
             };
             const result = await db.collection('accounts').insertOne(document);
             return [result, null];
