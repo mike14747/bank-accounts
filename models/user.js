@@ -36,6 +36,7 @@ const User = {
                     first: paramsObj.name.first,
                     last: paramsObj.name.last,
                 },
+                payees: paramsObj.payees,
             };
             const result = await db.collection('users').insertOne(document);
             return [result, null];
@@ -71,8 +72,25 @@ const User = {
                     first: paramsObj.name.first,
                     last: paramsObj.name.last,
                 },
+                payees: paramsObj.payees,
             };
             const result = await db.collection('users').updateOne({ _id: ObjectID(queryParams._id) }, { $set: document });
+            return [result, null];
+        } catch (error) {
+            return [null, error];
+        }
+    },
+    updatePayee: async (paramsObj) => {
+        // this method was copied from other methods and needs work
+        try {
+            const queryParams = {
+                _id: paramsObj._id,
+            };
+            const document = {
+                id: paramsObj.id,
+                name: paramsObj.name,
+            };
+            const result = await db.collection('users').updateOne({ _id: ObjectID(queryParams._id) }, { $push: { payees: document } });
             return [result, null];
         } catch (error) {
             return [null, error];

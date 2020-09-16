@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/user.js');
-const { usersSchema, userIdSchema, payeesSchema, usernameSchema } = require('./validation/schema/usersSchema');
+const { usersSchema, userIdSchema, payeesSchema, payeeIdSchema, usernameSchema } = require('./validation/schema/usersSchema');
 const { postError, putError, deleteError, nothingUpdatedError } = require('./utils/errorMessages');
 const isUserIdValid = require('./validation/helpers/isUserIdValid');
 
@@ -81,6 +81,7 @@ router.put('/', async (req, res, next) => {
                 first: req.body.name.first,
                 last: req.body.name.last,
             },
+            payees: req.body.payees,
         };
         await usersSchema.validateAsync(paramsObj);
         await userIdSchema.validateAsync({ _id: paramsObj._id });
@@ -90,6 +91,25 @@ router.put('/', async (req, res, next) => {
         if (data && data.modifiedCount === 1) return res.status(204).end();
         if (data && data.modifiedCount === 0) return res.status(299).json({ warning: nothingUpdatedError });
         res.status(400).json({ Error: putError });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.put('/payees', async (req, res, next) => {
+    try {
+        const paramsObj = {
+            _id: req.body._id,
+            id: req.body.id,
+            name: req.body.name,
+        };
+        await payeesSchema.validateAsync(paramsObj);
+        await payeeIdSchema.validateAsync({ id: paramsObj.id });
+        // confirm payee id exists
+        await userIdSchema.validateAsync({ _id: paramsObj._id });
+        const [data, error] = await User.addNewPayee(paramsObj);
+        if (error) return next(error);
+        data && data.modifiedCount === 1 ? res.status(201).json({ modifiedCount: data.modifiedCount }) : res.status(400).json({ Error: postError });
     } catch (error) {
         next(error);
     }

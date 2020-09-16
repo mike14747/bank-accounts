@@ -18,7 +18,7 @@ const usersSchema = Joi.object({
         first: Joi.string().required(),
         last: Joi.string().required(),
     }),
-
+    payees: Joi.array().required(),
 });
 
 const userIdSchema = Joi.object({
@@ -35,13 +35,22 @@ const payeesSchema = Joi.object({
     name: Joi.string().min(1).required(),
 });
 
+const payeeIdSchema = Joi.object({
+    id: Joi.number().integer().min(0).required(),
+});
+
 const usernameSchema = Joi.object({
-    username: Joi.string().min(1).required(),
+    username: Joi.string().min(6).max(15).messages({
+        'string.base': usernameError,
+        'string.min': usernameError,
+        'string.max': usernameError,
+    }).required(),
 });
 
 module.exports = {
     usersSchema,
     userIdSchema,
     payeesSchema,
+    payeeIdSchema
     usernameSchema,
 };
