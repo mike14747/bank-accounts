@@ -1,11 +1,11 @@
-const server = require('../../server');
+const app = require('../../server');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 chai.should();
 chai.use(chaiHttp);
-const requester = chai.request(server).keepOpen();
+const requester = chai.request(app).keepOpen();
 
-describe('Accounts API /api/accounts', function () {
+describe('Accounts API (/api/accounts)', function () {
     it('should GET all accounts', function (done) {
         requester.get('/api/accounts')
             .then(response => {
@@ -30,10 +30,8 @@ describe('Accounts API /api/accounts', function () {
             .catch(error => done(error));
     });
 
-    requester.close();
-
-    // after(function (done) {
-    //     requester.close();
-    //     done();
-    // });
+    after(function (done) {
+        requester.close();
+        done();
+    });
 });

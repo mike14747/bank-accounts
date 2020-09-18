@@ -43,6 +43,6 @@ mongodbConnect()
         }
     });
 
-const server = app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
 
-module.exports = server;
+module.exports = app;

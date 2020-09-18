@@ -8,7 +8,7 @@ const usersSchema = Joi.object({
         'string.min': usernameError,
         'string.max': usernameError,
     }).required(),
-    password: Joi.string().min(6).max(20).messages({
+    password: Joi.string().min(8).max(20).messages({
         'string.base': passwordError,
         'string.min': passwordError,
         'string.max': passwordError,
