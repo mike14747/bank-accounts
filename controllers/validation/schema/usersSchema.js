@@ -51,6 +51,6 @@ module.exports = {
     usersSchema,
     userIdSchema,
     payeesSchema,
-    payeeIdSchema
+    payeeIdSchema,
     usernameSchema,
 };

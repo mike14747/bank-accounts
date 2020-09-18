@@ -5,27 +5,26 @@ chai.should();
 chai.use(chaiHttp);
 const requester = chai.request(server).keepOpen();
 
-describe('Users API', function () {
-    describe('GET /api/users', function () {
-        it('should get all users', function (done) {
-            requester.get('/api/users')
-                .then(response => {
-                    response.should.have.status(200);
-                    response.body.should.be.a('array').and.have.lengthOf.at.least(1);
-                    response.body.forEach(function (element) {
-                        element.should.be.an('object').and.have.all.keys('_id', 'username', 'password', 'email', 'name');
-                        element._id.should.be.a('string').and.have.lengthOf(24);
-                        element.username.should.be.a('string').and.have.lengthOf.at.least(5);
-                        element.password.should.be.a('string').and.have.lengthOf.at.least(6);
-                        element.email.should.be.a('string').and.have.lengthOf.at.least(4);
-                        element.name.should.be.an('object').and.have.all.keys('first', 'last');
-                        element.name.first.should.be.a('string');
-                        element.name.last.should.be.a('string');
-                    });
-                    done();
-                })
-                .catch(error => done(error));
-        });
+describe('Users API /api/users', function () {
+    it('should GET all users', function (done) {
+        requester.get('/api/users')
+            .then(response => {
+                response.should.have.status(200);
+                response.body.should.be.a('array').and.have.lengthOf.at.least(1);
+                response.body.forEach(function (element) {
+                    element.should.be.an('object').and.have.all.keys('_id', 'username', 'password', 'email', 'name', 'payees');
+                    element._id.should.be.a('string').and.have.lengthOf(24);
+                    element.username.should.be.a('string').and.have.lengthOf.at.least(5);
+                    element.password.should.be.a('string').and.have.lengthOf.at.least(6);
+                    element.email.should.be.a('string').and.have.lengthOf.at.least(4);
+                    element.name.should.be.an('object').and.have.all.keys('first', 'last');
+                    element.name.first.should.be.a('string');
+                    element.name.last.should.be.a('string');
+                    element.payees.should.be.an('array');
+                });
+                done();
+            })
+            .catch(error => done(error));
     });
 
     after(function (done) {
