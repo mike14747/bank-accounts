@@ -29,7 +29,7 @@ mongodbConnect()
         app.use('/api', require('./controllers'));
     })
     .catch((error) => {
-        console.log('inside the catch in server.js');
+        console.log('inside the catch in server.js:', error);
         app.get('/api/*', (req, res) => {
             res.status(500).json({ message: 'An error occurred connecting to the database! ' + error.message });
         });
