@@ -22,10 +22,10 @@ app.use(require('./controllers/testController'));
 
 mongodbConnect()
     .then(() => {
-        // app.use(require('./passport/expressSession'));
-        // const passport = require('./passport/passportFunctions');
-        // app.use(passport.initialize());
-        // app.use(passport.session());
+        app.use(require('./passport/expressSession'));
+        const passport = require('./passport/passportFunctions');
+        app.use(passport.initialize());
+        app.use(passport.session());
         app.use('/api', require('./controllers'));
     })
     .catch((error) => {
