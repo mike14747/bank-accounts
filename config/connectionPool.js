@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb');
 let db;
+let client;
 
 const options = {
     useNewUrlParser: true,
@@ -9,7 +10,7 @@ const options = {
 
 const mongodbConnect = async () => {
     try {
-        const client = await MongoClient.connect(process.env.MONGODB_URI, options);
+        client = await MongoClient.connect(process.env.MONGODB_URI, options);
         db = client.db();
         return;
     } catch (error) {
@@ -27,5 +28,6 @@ const dbTest = () => {
 };
 
 const getDb = () => db;
+const getClient = () => client;
 
-module.exports = { mongodbConnect, getDb, dbTest };
+module.exports = { mongodbConnect, getDb, dbTest, getClient };

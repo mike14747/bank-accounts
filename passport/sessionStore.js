@@ -1,8 +1,9 @@
+const client = require('../config/connectionPool').getClient();
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 const sessionOptions = {
-    url: process.env.MONGODB_URI,
+    client: client,
     touchAfter: 24 * 3600,
 };
 
