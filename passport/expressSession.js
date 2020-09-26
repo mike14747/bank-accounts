@@ -1,7 +1,7 @@
 const session = (
     require('express-session')(
         {
-            key: 'swt',
+            key: process.env.ES_KEY,
             secret: process.env.SESSION_SECRET,
             store: require('./sessionStore'),
             resave: false,

@@ -12,7 +12,6 @@ const mongodbConnect = async () => {
     try {
         client = await MongoClient.connect(process.env.MONGODB_URI, options);
         db = client.db();
-        return;
     } catch (error) {
         console.log(error);
     }
