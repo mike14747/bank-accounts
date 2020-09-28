@@ -11,7 +11,7 @@ const LoginStrategy = new Strategy(async (username, password, done) => {
         if (data.length === 1) {
             bcryptjs.compare(password, data[0].hashed_password)
                 .then((res) => {
-                    if (res) return done(null, { id: data[0].user_id, username: data[0].username });
+                    if (res) return done(null, { _id: data[0]._id, username: data[0].username });
                     return done(null, false, { message: 'Incorrect password!' });
                 })
                 .catch(error => console.log(error));
