@@ -6,10 +6,11 @@ const User = require('../models/user');
 const LoginStrategy = new Strategy(async (username, password, done) => {
     // console.log(bcryptjs.hashSync(password, salt));
     try {
-        const [data, error] = await User.getUserByUsername({ username: username });
+        console.log('loginStrategy username:', username);
+        const [data, error] = await User.getUserByUsername(username);
         if (!data) return done(error);
         if (data.length === 1) {
-            bcryptjs.compare(password, data[0].hashed_password)
+            bcryptjs.compare(password, data[0].password)
                 .then((res) => {
                     if (res) return done(null, { _id: data[0]._id, username: data[0].username });
                     return done(null, false, { message: 'Incorrect password!' });

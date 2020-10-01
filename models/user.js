@@ -20,7 +20,7 @@ const User = {
     },
     getUserByIdForPassport: async (_id) => {
         try {
-            const result = await db.collection('users').find({ _id: ObjectID(_id) }).project({ password: 0, email: 0, name: 0, payees: 0 }).toArray();
+            const result = await db.collection('users').find({ _id: ObjectID(_id) }).project({ email: 0, name: 0, payees: 0 }).toArray();
             return [result, null];
         } catch (error) {
             return [null, error];
@@ -28,6 +28,7 @@ const User = {
     },
     getUserByUsername: async (username) => {
         try {
+            console.log('username:', username);
             const result = await db.collection('users').find({ username: username }).toArray();
             return [result, null];
         } catch (error) {
