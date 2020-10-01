@@ -21,7 +21,6 @@ router.get('/status', (req, res) => {
 });
 
 router.post('/login', (req, res, next) => {
-    console.log(req.body.username, req.body.password);
     passport.authenticate('login', (error, user, info) => {
         if (error) return next(error);
         if (!user) return res.status(299).json(info);

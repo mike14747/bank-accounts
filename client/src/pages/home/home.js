@@ -7,12 +7,12 @@ const Home = () => {
             </p>
             <p>
                 From here you can:
-                <ul>
-                    <li>Create accounts</li>
-                    <li>Manage balances</li>
-                    <li>Sort transactions</li>
-                </ul>
             </p>
+            <ul>
+                <li>Create accounts</li>
+                <li>Manage balances</li>
+                <li>Sort transactions</li>
+            </ul>
         </div>
     );
 };

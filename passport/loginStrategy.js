@@ -6,7 +6,6 @@ const User = require('../models/user');
 const LoginStrategy = new Strategy(async (username, password, done) => {
     // console.log(bcryptjs.hashSync(password, salt));
     try {
-        console.log('loginStrategy username:', username);
         const [data, error] = await User.getUserByUsername(username);
         if (!data) return done(error);
         if (data.length === 1) {
