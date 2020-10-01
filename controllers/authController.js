@@ -23,7 +23,7 @@ router.get('/status', (req, res) => {
 router.post('/login', (req, res, next) => {
     passport.authenticate('login', (error, user, info) => {
         if (error) return next(error);
-        if (!user) return res.status(299).json(info);
+        if (!user) return res.status(400).json(info);
         req.logIn(user, function (error) {
             if (error) return next(error);
         });

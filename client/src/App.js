@@ -22,7 +22,6 @@ function App() {
     useEffect(() => {
         axios.get('/api/auth/status')
             .then(response => {
-                console.log(response);
                 response.status === 200 ? setUser(response.data.user) : setUser(null);
             })
             .catch((error) => {
