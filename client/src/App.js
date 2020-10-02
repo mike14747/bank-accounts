@@ -33,7 +33,7 @@ function App() {
 
     return (
         <Router>
-            <UserContext.Provider value={[user, setUser]}>
+            <UserContext.Provider value={{ user, setUser }}>
                 <Header />
                 <div className="container flex-fill bg-white border-left border-right border-dark">
                     <Switch>
