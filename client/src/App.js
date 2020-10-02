@@ -18,6 +18,7 @@ import Home from './pages/home/home';
 
 function App() {
     const [user, setUser] = useState(null);
+    // console.log(user);
 
     useEffect(() => {
         axios.get('/api/auth/status')
@@ -28,7 +29,7 @@ function App() {
                 console.log(error);
                 setUser(null);
             });
-    }, []);
+    }, [user]);
 
     return (
         <Router>

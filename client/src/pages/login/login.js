@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
@@ -14,6 +15,7 @@ const Login = () => {
             })
                 .then(response => {
                     console.log(response);
+                    return <Redirect to="/dashboard" />;
                 })
                 .catch(error => console.log(error));
         }
