@@ -8,18 +8,12 @@ const Login = () => {
 
     const userContext = useContext(UserContext);
 
-    const loginUser = (user) => {
-        userContext.setUser(user);
-    };
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
         if (username.length >= 6 && username.length <= 15 && password.length >= 8 && password.length <= 20) {
             axios.post('/api/auth/login', { username, password })
-                .then((response) => {
-                    loginUser(response.data.user);
-                })
+                .then(response => userContext.setUser(response.data.user))
                 .catch(error => console.log(error.message));
         }
     };

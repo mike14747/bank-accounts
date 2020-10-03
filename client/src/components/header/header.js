@@ -1,4 +1,5 @@
 import React from 'react';
+import AuthStatus from './subcomponents/authStatus';
 
 const Header = () => {
     return (
@@ -8,7 +9,7 @@ const Header = () => {
                     <h3>Bank Accounts</h3>
                 </div>
                 <div className="col-6 text-right">
-                    Logged in as: mike
+                    <AuthStatus />
                 </div>
             </div>
         </div>
