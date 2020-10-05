@@ -28,7 +28,6 @@ const User = {
     },
     getUserByUsername: async (username) => {
         try {
-            // console.log('username:', username);
             const result = await db.collection('users').find({ username: username }).toArray();
             return [result, null];
         } catch (error) {

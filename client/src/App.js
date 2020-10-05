@@ -28,7 +28,7 @@ function App() {
                 console.log(error);
                 setUser(null);
             });
-    }, [user]);
+    }, []);
 
     return (
         <Router>
