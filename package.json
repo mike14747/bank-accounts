@@ -19,6 +19,7 @@
         "javascript",
         "npm",
         "express",
+        "joi",
         "mongodb",
         "mocha",
         "chai",
